@@ -37,6 +37,14 @@ my_data_rows = my_cur.fetchall()
 streamlit.header("the fruit load list contains:")
 streamlit.dataframe(my_data_rows)
 
+streamlit.header("Add a Fruit")
+new_fruit = streamlit.text_input('Enter a new fruit:')
+if streamlit.button('Add Fruit'):
+    insert_query = "INSERT INTO fruit_load_list (fruit) VALUES ('{}')".format(new_fruit)
+    my_cur.execute(insert_query)
+    my_cnx.commit()
+    streamlit.write("Thank you for adding the fruit: {}".format(new_fruit))
+
 
 
 
