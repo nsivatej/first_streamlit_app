@@ -36,10 +36,8 @@ my_cur.execute("SELECT * from fruit_load_list")
 my_data_rows = my_cur.fetchall()
 streamlit.header("the fruit load list contains:")
 streamlit.dataframe(my_data_rows)
-my_fruit_list = my_fruit_list.set_index('Fruit')
-add_my_fruit = streamlit.multiselect("pick some fruits:", list(my_fruit_list.index))
-
-# Let's put a pick list here so they can pick the fruit they want to include 
+fruit_list = fruit_list.set_index('Fruit')
+add_my_fruit = streamlit.multiselect("pick some fruits:", list(fruit_list.index))
 fruits_to_show = add_my_fruit.loc[fruits_selected]
 streamlit.dataframe(fruits_to_show)
 
